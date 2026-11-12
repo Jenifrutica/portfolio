@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jenifer Urbano — Full-stack &amp; embedded developer</title>
+<meta name="description" content="Software engineering student in Pasto, Colombia. Builds full-stack and embedded systems end to end: ESP32 firmware, FastAPI backends, React and Next.js interfaces.">
+<link rel="canonical" href="https://jenilarper.dev/">
+<meta property="og:title" content="Jenifer Urbano — Full-stack &amp; embedded developer">
+<meta property="og:description" content="Wearable sensing, AI-constrained reasoning and production web interfaces. Nine-repository SyncFit Edge, Legato live on AWS.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jenilarper.dev/">
+<meta name="theme-color" content="#F6F3EC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317514B'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23F6F3EC' text-anchor='middle'%3EJU%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EC;
+    --paper-2:#EFEAE0;
+    --ink:#131310;
+    --muted:#5B584F;
+    --line:#D9D3C5;
+    --accent:#17514B;
+    --accent-soft:#DCE6E2;
+    --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --max:1060px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    font-feature-settings:"kern" 1,"liga" 1;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:var(--paper)}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,5vw,44px)}
+  .mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+
+  /* ---------- nav ---------- */
+  .top{border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+  .mark{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px}
+  .mark .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+  nav{display:flex;align-items:center;gap:clamp(14px,2.5vw,28px)}
+  nav a{color:var(--muted);font-size:14px;transition:color .15s ease}
+  nav a:hover{color:var(--ink)}
+  nav a.cv{color:var(--accent);font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--accent);padding-bottom:2px}
+  .menu-links{display:flex;gap:clamp(14px,2.5vw,28px)}
+  @media (max-width:640px){
+    .menu-links{display:none}
+    .status{font-size:10.5px;letter-spacing:.04em;line-height:1.5}
+  }
+
+  /* ---------- hero ---------- */
+  header.hero{padding:clamp(48px,8vw,92px) 0 clamp(28px,4vw,44px)}
+  .status{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:7px 14px;color:var(--muted);margin-bottom:clamp(28px,4vw,40px)}
+  .status .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(52px,10.5vw,112px);line-height:.92;letter-spacing:-.02em;
+    margin:0 0 22px;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{max-width:60ch;font-size:clamp(18px,2.2vw,21px);line-height:1.55;color:#33312B;margin:0 0 34px}
+  .lede strong{font-weight:600}
+  .contact-row{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center}
+  .contact-row a{display:inline-flex;align-items:center;gap:7px;font-size:15px;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .15s ease,color .15s ease}
+  .contact-row a:hover{border-color:var(--accent);color:var(--accent)}
+  .contact-row .arrow{font-family:var(--mono);font-size:12px;color:var(--accent)}
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(34px,5vw,58px) 0}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-top:1px solid var(--ink);padding-top:14px;margin-bottom:clamp(22px,3vw,34px)}
+  .sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,40px);line-height:1;margin:0}
+  .sec-head span{color:var(--muted)}
+
+  /* ---------- work ---------- */
+  .work{display:flex;flex-direction:column}
+  .job{
+    display:grid;grid-template-columns:64px 1fr;gap:clamp(18px,3vw,36px);
+    padding:clamp(26px,3.6vw,34px) 0;border-top:1px solid var(--line);
+  }
+  .job:last-child{border-bottom:1px solid var(--line)}
+  .job .num{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:6px}
+  .job h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,34px);line-height:1.05;margin:0 0 4px;letter-spacing:-.01em}
+  .job .sub{color:var(--muted);font-size:15px;margin:0 0 14px}
+  .job p{max-width:64ch;margin:0 0 14px;color:#2C2A25}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px;padding:0;list-style:none}
+  .tags li{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--accent);background:var(--accent-soft);border-radius:3px;padding:4px 8px}
+  .job-links{display:flex;flex-wrap:wrap;gap:18px}
+  .job-links a{font-size:14px;font-weight:500;border-bottom:1px solid var(--accent);padding-bottom:1px;color:var(--accent);transition:opacity .15s ease}
+  .job-links a:hover{opacity:.65}
+  .wip{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:3px 7px;display:inline-block;vertical-align:3px;margin-left:8px}
+
+  /* ---------- experience ---------- */
+  .exp{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .exp-row{display:grid;grid-template-columns:150px 1fr;gap:clamp(16px,3vw,36px);padding:20px 0;border-bottom:1px solid var(--line)}
+  .exp-when{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);padding-top:5px;text-transform:uppercase}
+  .exp-row h3{font-family:var(--sans);font-size:17px;font-weight:600;margin:0 0 3px;letter-spacing:-.005em}
+  .exp-row p{margin:0;max-width:70ch;color:#2C2A25;font-size:15.5px}
+  @media (max-width:640px){.exp-row{grid-template-columns:1fr;gap:6px}.exp-when{padding-top:0}}
+
+  /* ---------- stack ---------- */
+  .stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(22px,3vw,34px)}
+  .stack-grid h3{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;font-weight:500}
+  .stack-grid p{margin:0;font-size:15.5px;line-height:1.75;color:#2C2A25}
+
+  /* ---------- about ---------- */
+  .about{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+  .about p{margin:0 0 16px;max-width:58ch}
+  .about p:last-child{margin-bottom:0}
+  .facts{border-left:1px solid var(--line);padding-left:clamp(20px,3vw,32px)}
+  .portrait{
+    width:min(190px,100%);aspect-ratio:4/5;position:relative;margin:0 0 26px;
+    background:var(--paper-2);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;
+  }
+  .portrait span{font-family:var(--serif);font-size:46px;color:var(--accent);opacity:.5;letter-spacing:.04em}
+  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .facts dl{margin:0;display:grid;gap:18px}
+  .facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .facts dd{margin:0;font-size:15.5px}
+  @media (max-width:760px){ .about{grid-template-columns:1fr} .facts{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px} }
+
+  /* ---------- contact ---------- */
+  .contact{border-top:1px solid var(--ink)}
+  .contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,7vw,72px);line-height:1;letter-spacing:-.02em;margin:0 0 26px}
+  .contact h2 em{font-style:italic;color:var(--accent)}
+  .mail{font-family:var(--mono);font-size:clamp(15px,2.4vw,20px);border-bottom:2px solid var(--accent);padding-bottom:4px;display:inline-block;margin-bottom:34px;word-break:break-word}
+  footer{border-top:1px solid var(--line);padding:26px 0 40px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;color:var(--muted)}
+  footer a{border-bottom:1px solid var(--line)}
+  footer a:hover{color:var(--ink)}
+
+  @media (max-width:640px){
+    .job{grid-template-columns:1fr;gap:8px;padding:24px 0}
+    .job .num{padding-top:0;font-size:11px}
+    .contact-row{gap:12px 20px}
+    .contact-row a{padding:4px 0}
+    .contact-row{flex-direction:column;align-items:flex-start;gap:14px}
+    .job-links a{padding:4px 0}
+    .about{padding-top:4px}
+  }
+
+  @media print{
+    .top,nav,.status,.contact-row{display:none!important}
+    body{background:#fff;font-size:11pt}
+    header.hero{padding:0 0 24px}
+    h1{font-size:42pt}
+    section{padding:18px 0;break-inside:avoid}
+    .job{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a class="mark" href="/"><span class="dot"></span>Jenifer Urbano</a>
+    <nav aria-label="Primary">
+      <div class="menu-links">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#stack">Stack</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="cv" href="Jenifer_Urbano_CV.pdf">CV ↓</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="status mono"><span class="pulse"></span>Open to internships, junior roles &amp; SENA apprenticeship contracts</p>
+    <h1>Full-stack and<br>embedded <em>developer.</em></h1>
+    <p class="lede">
+      I build systems end to end — from <strong>ESP32 sensors</strong> to production interfaces.
+      Currently studying Software Engineering in Pasto, Colombia, and shipping software that
+      handles real health, security and everyday problems.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:jdurbanocordoba@gmail.com">jdurbanocordoba@gmail.com</a>
+      <a href="https://github.com/Jenifrutica" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+      <a href="https://www.linkedin.com/in/jenifer-urbano-59b442353/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+      <span class="mono">04 projects</span>
+    </div>
+
+    <div class="work">
+
+      <article class="job">
+        <div class="num">01</div>
+        <div>
+          <h3>SyncFit Edge</h3>
+          <p class="sub">Wearable sensing + AI training adaptation · multi-repository</p>
+          <p>
+            A system that adapts training load to menstrual and gestational phases. I built the
+            ESP32/PPG firmware in C++, the FastAPI + WebSockets backend, the PostgreSQL layer and
+            the Next.js interface — then constrained the DeepSeek reasoning kernel to strict JSON
+            so no payload could drift. Every message between firmware, backend and frontend
+            validates against one published contract layer.
+          </p>
+          <ul class="tags">
+            <li>C++</li><li>ESP32</li><li>FastAPI</li><li>PostgreSQL</li><li>Next.js</li><li>JSON Schema</li><li>Docker</li>
+          </ul>
+          <div class="job-links">
+            <a href="https://github.com/Jenifrutica/syncfit-contracts" target="_blank" rel="noopener">Contracts ↗</a>
+            <a href="https://github.com/Jenifrutica/syncfit-hardware" target="_blank" rel="noopener">Firmware ↗</a>
+            <a href="https://github.com/Jenifrutica/syncfit-backend" target="_blank" rel="noopener">Backend ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="num">02</div>
+        <div>
+          <h3>Legato</h3>
+          <p class="sub">Web music player for musicians · live on AWS</p>
+          <p>
+            Playlists, library and history built on hand-written doubly linked lists — with a live
+            visualizer that makes the data structure observable. Cloud sync through Firebase, an
+            offline-first IndexedDB fallback, Spotify import, drag &amp; drop and full i18n.
+            Deployed on S3 + CloudFront with an ACM certificate.
+          </p>
+          <ul class="tags">
+            <li>React 19</li><li>TypeScript</li><li>Firebase</li><li>IndexedDB</li><li>AWS</li><li>Vitest</li><li>Playwright</li>
+          </ul>
+          <div class="job-links">
+            <a href="https://legato.jenilarper.dev" target="_blank" rel="noopener">Live app ↗</a>
+            <a href="https://github.com/Jenifrutica/legato" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="num">03</div>
+        <div>
+          <h3>Multi-Agent Ransomware Detector <span class="wip">in progress</span></h3>
+          <p class="sub">Windows · Sysmon · MITRE ATT&amp;CK · research with two co-authors</p>
+          <p>
+            Most detectors answer one question: threat or no threat. This architecture runs on the
+            host, with one agent per log source reading Sysmon telemetry, and an orchestrator that
+            correlates their alerts to reconstruct the attack sequence in MITRE ATT&amp;CK terms
+            before recommending a mitigation. It is evaluated against a monolithic classifier in
+            Windows 11 virtual machines on anticipation, traceability and false-positive rate.
+          </p>
+          <ul class="tags">
+            <li>Sysmon</li><li>MITRE ATT&amp;CK</li><li>Multi-agent</li><li>Forensics</li><li>Windows 11</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="num">04</div>
+        <div>
+          <h3>HayPaComer <span class="wip">in progress</span></h3>
+          <!-- TODO: add href to the HayPaComer repo/app when the URL is final -->
+          <p class="sub">Smart fridge with AI nutrition routines</p>
+          <p>
+            A fridge that knows what is inside it and turns that into nutritional routines instead
+            of a shopping list. Angular on the front, NestJS on the back, with an AI layer deciding
+            what to cook before food goes to waste.
+          </p>
+          <ul class="tags">
+            <li>Angular</li><li>NestJS</li><li>TypeScript</li><li>AI</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <span class="mono">Pasto · remote</span>
+    </div>
+    <div class="exp">
+      <div class="exp-row">
+        <div class="exp-when">2025 — now</div>
+        <div>
+          <h3>Freelance Developer &amp; Programming Mentor</h3>
+          <p>Mentoring students and junior developers in fundamentals, debugging and code review; frontend evaluations and introductory red-team exercises for client web apps.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-when">2025 — now</div>
+        <div>
+          <h3>Sales Advisor · Asgard GYM</h3>
+          <p>Advising members at Asgard GYM on memberships and services in person, and owning the relationship after the sale. This is where my communication and client-care skills were built — the same clarity I bring to code review and to explaining technical trade-offs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Stack</h2>
+      <span class="mono">What I actually use</span>
+    </div>
+    <div class="stack-grid">
+      <div>
+        <h3>Languages</h3>
+        <p>C++, C#, Python, Java, JavaScript, TypeScript, HTML/CSS</p>
+      </div>
+      <div>
+        <h3>Frontend</h3>
+        <p>React 19, Next.js, Angular, Vite, Tailwind CSS, Zustand</p>
+      </div>
+      <div>
+        <h3>Backend &amp; data</h3>
+        <p>FastAPI, NestJS, Spring Boot, Node.js, PostgreSQL, Firebase, REST, WebSockets</p>
+      </div>
+      <div>
+        <h3>Embedded</h3>
+        <p>ESP32 firmware, PPG / thermal / load-cell sensing, C++</p>
+      </div>
+      <div>
+        <h3>Testing</h3>
+        <p>Pytest, Vitest, Playwright, Testing Library</p>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <p>Linux (Fedora, Arch, Kali, Ubuntu), Docker, Git, GitHub Actions, LLM APIs and agent tooling</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>About</h2>
+      <span class="mono">Pasto, Nariño · CO</span>
+    </div>
+    <div class="about">
+      <div>
+        <p>
+          I am a Software Engineering student at Universidad Cooperativa de Colombia (2028) and a
+          Technologist in Video Game and Interactive Environment Development from SENA. That second
+          title is why I care about interactive environments rather than only screens: simulations,
+          sensors and interfaces that respond to a body, not just a click.
+        </p>
+        <p>
+          Before writing code I sold gym memberships, so explaining a decision to a client who is
+          not technical is not new to me. I look for work with measurable social impact — health,
+          security, accessibility — and I like owning a feature from the data model to the deployment. I use Linux daily (Fedora, Arch, Kali, Ubuntu), speak
+          English and Portuguese, and I am studying Mandarin.
+        </p>
+      </div>
+      <div class="facts">
+        <figure class="portrait" aria-label="Portrait">
+          <span>JU</span>
+          <img src="photo.jpg" alt="Jenifer Urbano" onerror="this.remove()">
+        </figure>
+        <dl>
+          <div>
+            <dt>Age</dt>
+            <dd>18</dd>
+          </div>
+          <div>
+            <dt>Education</dt>
+            <dd>Software Engineering, UCC — expected 2028</dd>
+          </div>
+          <div>
+            <dt>Also</dt>
+            <dd>Technologist in Video Game &amp; Interactive Environments, SENA</dd>
+          </div>
+          <div>
+            <dt>Languages</dt>
+            <dd>Spanish (native) · English (bilingual, C1) · Portuguese (advanced) · Mandarin (elementary)</dd>
+          </div>
+          <div>
+            <dt>Looking for</dt>
+            <dd>Internship · junior role · research seedbed · SENA apprenticeship contract</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's build something<br>that <em>matters.</em></h2>
+    <a class="mail" href="mailto:jdurbanocordoba@gmail.com">jdurbanocordoba@gmail.com</a>
+    <div class="contact-row">
+      <a href="https://github.com/Jenifrutica" target="_blank" rel="noopener">github.com/Jenifrutica <span class="arrow">↗</span></a>
+      <a href="https://www.linkedin.com/in/jenifer-urbano-59b442353/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+      <a href="Jenifer_Urbano_CV.pdf">Download CV (PDF) <span class="arrow">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Jenifer Daniela Urbano Córdoba</span>
+    <span>Pasto, Colombia · <a href="mailto:jdurbanocordoba@gmail.com">say hello</a></span>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>
