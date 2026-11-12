@@ -1,0 +1,5 @@
+# www -> apex, un solo salto
+https://www.jenilarper.dev/* https://jenilarper.dev/:splat 301!
+
+# compatibilidad: la version en espanol por query string
+/es /?lang=es 302
